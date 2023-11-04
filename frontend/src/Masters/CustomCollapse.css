@@ -1,0 +1,27 @@
+.custom-collapse {
+  background-color: white; /* White background for the entire Collapse */
+  padding: 10px; /* Example padding for the entire Collapse */
+}
+
+/* Style for the Collapse panels */
+.custom-collapse .ant-collapse-item {
+  margin-bottom: 10px; /* Example spacing between panels */
+  background-color: #f0f0f0; /* Light grey background for panels */
+  border: 1px solid #d9d9d9; /* Light grey border for panels */
+  border-radius: 4px; /* Example border radius for panels */
+}
+
+/* Style for the Collapse headers */
+.custom-collapse .ant-collapse-header {
+  background-color: #f0f0f0; /* Match the panel background color */
+  border-bottom: 1px solid #d9d9d9; /* Example border between headers and content */
+  border-radius: 4px 4px 0 0; /* Example border radius for header */
+}
+
+/* Style for the Collapse content */
+.custom-collapse .ant-collapse-content {
+  border-radius: 0 0 4px 4px; /* Example border radius for content */
+  border: 1px solid #d9d9d9; /* Light grey border for content */
+  background-color: white; /* White background for content */
+  padding: 10px; /* Example padding for content */
+}

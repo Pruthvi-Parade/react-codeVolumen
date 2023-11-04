@@ -1,0 +1,188 @@
+.App {
+    text-align: center;
+}
+.Counter {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+	text-shadow: 0 2px white, 0 3px #777;
+	text-align:center; 
+	font-size:100px; 
+	color:#222; 
+	letter-spacing:1px;
+  	font-family:"Playfair Display", serif; 
+	font-weight:400;
+}
+:root {
+    --test: rgb(248, 57, 184);
+
+    --navbarHeight: 50px;
+    --sidebarOpenWidth: 200px;
+    --sidebarClosedWidth: 44px;
+    --sidebarFooterHeight: 25px;
+
+    --navbarBackground: #18232d;
+    --navbarColor: #fff;
+
+    --sidebarBackground: #18232d;
+    --sidebarColor: #fff;
+
+    --contentBackground: #fff;
+
+    --resizeHandleColor: #18232d;
+
+    --eventTableTextColor: #fff;
+    /* --eventTableTextColor: black; */
+
+    --eventStatusOpenGradient: linear-gradient(
+        0deg,
+        rgb(253, 26, 26) 0%,
+        rgb(203, 15, 15) 50%,
+        rgb(255, 99, 99) 100%
+    );
+    /* --eventStatusOpenGradient: rgba(255, 18, 18, 0.875); */
+    --eventStatusACKGradient: linear-gradient(
+        0deg,
+        rgb(12, 173, 39) 0%,
+        rgb(0, 120, 30) 100%,
+        rgb(0, 100, 20) 100%
+    );
+    /* --eventStatusACKGradient: rgba(47, 251, 24, 0.67); */
+    --eventStatusSelectedGradient: linear-gradient(
+        0deg,
+        rgb(0, 132, 134) 0%,
+        rgb(27, 65, 216) 50%,
+        rgb(0, 140, 200) 100%
+    );
+    /* --eventStatusSelectedGradient: rgba(0, 128, 192, 0.76); */
+
+    --inputLabelColor: #18232d;
+}
+
+.sidebar-component {
+    height: 100vh;
+    overflow-y: auto;
+    background-color: var(--sidebarBackground);
+    color: var(--sidebarColor);
+    /* border-right: 2px solid var(--sidebarColor); */
+}
+
+.ant-layout-header {
+    background-color: var(--navbarBackground);
+    color: var(--navbarColor);
+    padding: 0;
+    height: var(--navbarHeight);
+    line-height: var(--navbarHeight);
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 20px;
+    padding: 0px 10px;
+}
+
+.sidebar-top-logo {
+    border-right: 1px solid var(--sidebarColor);
+    border-bottom: 1px solid var(--sidebarColor);
+    height: var(--navbarHeight);
+    line-height: var(--navbarHeight);
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    /* text-align: left; */
+    padding: 0px 10px;
+    font-size: 20px;
+    overflow: hidden;
+    gap: 10px;
+    /* justify-content: space-between; */
+}
+
+.sidebar-content {
+    height: calc(
+        100vh - var(--navbarHeight) - var(--sidebarFooterHeight) - 5px
+    );
+    overflow: auto;
+    justify-content: space-between;
+    /* padding-bottom: 100px; */
+}
+
+.sidebar-footer {
+    padding: 0px 10px;
+    border-top: 1px solid #e8e8e8;
+    height: var(--sidebarFooterHeight);
+    overflow: hidden;
+    /* line-height: var(--sidebarFooterHeight); */
+
+    /* text-align: center; */
+}
+
+.main-content-div {
+    width: 100%;
+    padding: 0px 3px;
+    background-color: var(--contentBackground);
+    height: calc(100vh - var(--navbarHeight));
+    overflow: auto;
+}
+
+.Loginform {
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+    background-color: white;
+}
+
+.btn-btn-size {
+    height: 40px;
+    padding: 6.4px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    margin: 5%;
+}
+
+.Loginform {
+    height: 100vh;
+    background-image: url("/public/LoginPage.png");
+}
+
+.locate_container {
+    margin-left: 20%;
+}
+
+/* .site-layout .site-layout-background {
+  background: #fff;
+} */
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
