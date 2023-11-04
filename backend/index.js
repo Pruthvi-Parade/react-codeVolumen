@@ -25,11 +25,11 @@ app.use(express.json());
 // Set up your routes here
 const userRoutes = require('./routes/userRoutes');
 const librarianRoutes = require('./routes/librarianRoutes');
-// const commonRoutes = require('./routes/commonRoutes');
+const commonRoutes = require('./routes/commonRoutes');
 
 app.use('/api/user', userRoutes);
 app.use('/api/librarian', librarianRoutes);
-// app.use('/api/common', commonRoutes);
+app.use('/api/common', commonRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);

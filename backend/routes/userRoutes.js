@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
+const Book = require('../models/books');
 
 // User signup
 router.post('/signup', async (req, res) => {
@@ -47,44 +48,27 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Book Appointment
-
-// router.post('/bookappointment', async (req, res) => {
-//   try {
-//     const { patientname, doctorname, time, date } = req.body;
-
-//     const appointment = await Appointment.create({
-//       patientname,
-//       doctorname,
-//       time,
-//       date
-//     }) 
-//     await appointment.save();
-//     res.status(200).json({message: "Appointment Booked", appointment})
-
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: 'Server Error' });
-//   }
-// })
-
-// View Reports
-
-// router.get('/viewreports/:patientname', async (req, res) => {
-
-//   try {
-//     const { patientname } = req.params;
+  // Add a book
+  router.post('/add-book', async (req, res) => {
+    try {
+      const { title, author, quantity, summary, excerpt } = req.body;
   
-//     const reports = await Report.find({patientname});
-
-//     if ( reports.length == 0)
-//         return res.status(200).json({message: "No Reports Available"});
-//       console.log(reports);
-
-//     res.status(200).json({reports});
-//     } catch (error) {
-//     res.status(500).json({message: "Internal Server Error"});
-//   }
-// })
+      // Create a new book using the Book model
+      const newBook = new Book({
+        title,
+        author,
+        quantity,
+        summary,
+        excerpt,
+      });
+  
+      // Save the new book to the database
+      const savedBook = await newBook.save();
+  
+      res.status(201).json({ message: 'Book added successfully', book: savedBook });
+    } catch (error) {
+      res.status(500).json({ message: 'Failed to add book', error: error.message });
+    }
+  });
 
 module.exports = router;

@@ -1,17 +1,11 @@
-const autoIncrement = require('mongoose-auto-increment');
+const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema({
-  bookId: { type: Number, required: true }, 
   title: { type: String, required: true },
   author: { type: String, required: true },
-  ISBN: { type: String, unique: true },
-  quantity: { type: Number, default: 1 }, 
-  genres: [String],
+  quantity: { type: Number, default: 1 },
+  summary: { type: String, required: true },
   excerpt: { type: String, required: true },
 });
 
-bookSchema.plugin(autoIncrement.plugin, { model: 'Book', field: 'bookId' });
-
-
-
- module.exports = mongoose.model('Book', bookSchema);
+module.exports = mongoose.model('Book', bookSchema);

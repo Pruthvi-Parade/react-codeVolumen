@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const Librarian = require('../models/librarian');
+const Book = require('../models/books');
 
 // Librarian signup
 router.post('/signup', async (req, res) => {
@@ -45,47 +46,39 @@ router.post('/login', async (req, res) => {
       res.status(500).json({ message: 'Server Error' });
     }
   });
+
+  // Update Book
+  router.put('/update-book/:id', async (req, res) => {
+    try {
+      const bookId = req.params.id;
+      const updatedBook = req.body; // Contains the updated book details
   
-  // View Appointments
+      const book = await Book.findByIdAndUpdate(bookId, updatedBook, { new: true });
+  
+      if (!book) {
+        return res.status(404).json({ message: 'Book not found' });
+      }
+  
+      res.status(200).json({ message: 'Book updated successfully', book });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server Error' });
+    }
+  });
+  
 
-// router.get('/viewappointments/:Librarianname', async (req, res) => {
-//   try {
-//     const { Librarianname } = req.params;
+  // Delete Book
+  router.delete('/delete-book/:bookId', async (req, res) => {
+    const { bookId } = req.params;
+    try {
+      const deletedBook = await Book.findByIdAndDelete(bookId);
+      if (!deletedBook) {
+        return res.status(404).json({ message: 'Book not found' });
+      }
+      res.status(200).json({ message: 'Book deleted successfully', deletedBook });
+    } catch (error) {
+      res.status(500).json({ message: 'Failed to delete book', error: error.message });
+    }
+  });
 
-//     const appointments = await Appointment.find({Librarianname});
-
-//     if ( appointments.length == 0)
-//       return res.status(200).json({message: "No Appointments booked"});
-//     console.log(appointments);
-//     res.status(200).json({appointments});
-//   } catch (error) {
-    
-//   }
-// })
-
-  // Make Report
-
-  // router.post('/makereport', async (req, res) => {
-  //   try {
-      
-  //     const {patientname, Librarianname, description} = req.body;
-
-  //     const report = await Report.create({
-  //       patientname,
-  //       Librarianname,
-  //       description,
-  //     })
-
-  //     console.log(report);
-  //     await report.save();
-
-  //     res.status(200).json({ message: "Report Stored", report});
-  //   } catch (error) {
-
-  //     console.error(error);
-  //     res.status(500).json({ message: 'Server Error' });
-      
-  //   }
-  // })
-
-    module.exports = router;
+module.exports = router;
